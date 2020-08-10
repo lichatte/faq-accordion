@@ -1,0 +1,22 @@
+@import 'reset';
+
+$color-white: #FFF;
+$color-black: #000;
+
+$background-color: #333;
+$main-blue-color-5: #1B9AAA;
+$main-blue-color-4: #14717b;
+$main-blue-color-3: #11616a;
+$main-blue-color-2: #0e5058;
+$main-blue-color-1: #0b4047;
+$main-purple-color: #90708C;
+$main-orange-color: #FFD166;
+$main-white-color: #FCFCFC;
+
+$main-font-color: $color-white;
+$link-color: $main-blue-color-5;
+
+body {
+    background-color: $background-color;
+    color: $main-font-color;
+}
