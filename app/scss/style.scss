@@ -2,21 +2,223 @@
 
 $color-white: #FFF;
 $color-black: #000;
+$color-dark: #333;
+$color-dark-blue: #1D1E35;
+$color-dark-blue2: #4A4B5E;
+$color-dark-blue3: #787887;
+$color-light-gray: #E7E7E9;
 
-$background-color: #333;
-$main-blue-color-5: #1B9AAA;
-$main-blue-color-4: #14717b;
-$main-blue-color-3: #11616a;
-$main-blue-color-2: #0e5058;
-$main-blue-color-1: #0b4047;
-$main-purple-color: #90708C;
-$main-orange-color: #FFD166;
+$main-purple: #AB68eB;
+$main-purple2: #6663E8;
 $main-white-color: #FCFCFC;
+$main-red: #F47C57;
 
-$main-font-color: $color-white;
-$link-color: $main-blue-color-5;
+$main-font-color: $color-dark-blue3;
+$main-title-color: $color-dark-blue;
+$link-color: #FF0;
+
+html {
+    height: 100%;
+}
 
 body {
-    background-color: $background-color;
+    align-items: center;
+    background: linear-gradient($main-purple, $main-purple2);
+    background-attachment: fixed;
     color: $main-font-color;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Kumbh Sans';
+    font-size: 14px;
+    height: 100%;
+    justify-content: center;
+    line-height: 16px;
+    margin: 0;
+}
+
+a {
+    color: $link-color;
+}
+
+.container {
+    clear: both;
+    padding: 20px;
+}
+
+.col {
+    padding: 0 25px;
+}
+
+.hidden-xs {
+    display: none;
+}
+
+input {
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+}
+
+.accordion {
+    background-image: url('../images/bg-pattern-mobile.svg');
+    background-repeat: no-repeat;
+    background-color: $color-white;
+    background-position: center top;
+    border-radius: 20px;
+    padding: 120px 0 25px;
+    margin-top: 50%;
+
+    &__title {
+        color: $main-title-color;
+        font-size: 24px;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+    &__illustration {
+        position: absolute;
+        margin: auto;
+        left: 0;
+        right: 0;
+        top: -100px;
+    }
+
+    &__tabs {
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    &__tab {
+        border-bottom: 1px solid $color-light-gray;
+        overflow: hidden;
+        margin: 16px 0;
+
+        &-label {
+            color: $color-dark-blue2;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 8px 16px 0;
+
+            &::after {
+                content: '\276F';
+                color: $main-red;
+                width: 10px;
+                height: 10px;
+                text-align: center;
+                transition: transform .35s;
+                transform: rotate(-90deg);
+            }
+        }
+
+        &-content {
+            line-height: 20px;
+            max-height: 0;
+            transition: max-height .35s, padding .3s;
+            padding: 0;
+        }
+      }
+      
+    // :checked
+    input:checked {
+        + .accordion__tab-label {
+            font-weight: 700;
+
+            &::after {
+                transform: rotate(90deg);
+            }
+        }
+        ~ .accordion__tab-content {
+            max-height: 100vh;
+            padding: 0 0 16px;
+            transition: max-height .3s, padding .35s;
+            transition-delay: .4s;
+        }
+    }
+}
+
+.attribution {
+    color: $color-light-gray;
+    text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+    .visible-xs {
+        display: none;
+    }
+
+    body {
+        font-size: 16px;
+    }
+
+    .col {
+        padding: 0;
+        width: 50%;
+    }
+
+    .accordion {
+        align-items: flex-start;
+        background-image: url('../images/illustration-woman-online-desktop.svg'), url('../images/bg-pattern-desktop.svg');
+        background-position: -120px 100px, -320px -50px;
+        background-size: 60%, 90%;
+        display: flex;
+        height: fit-content;
+        margin: auto;
+        max-width: 90%;
+        padding: 100px 0;
+
+        &__tabs {
+            width: 90%;
+        }
+
+        &__title {
+            font-size: 32px;
+            line-height: 1;
+            margin-bottom: 35px;
+            text-align: left;
+        }
+
+        &__illustration {
+            position: relative;
+            margin: auto;
+            left: -45%;
+            top: 0;
+            width: 450px;
+
+            &-box {
+                left: -93px;
+                position: relative;
+                top: 100px;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .hidden-xs {
+        display: block;
+    }
+
+    .accordion {
+        background-position: -80px 80px, -530px -230px;
+        background-size: 460px, 900px;
+        max-width: 850px;
+
+        &__tabs {
+            width: 75%;
+        }
+
+        &__tab {
+            &-label {
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+        }
+
+        &__illustration {
+            left: -20%;
+            width: 465px;
+        }
+    }
 }

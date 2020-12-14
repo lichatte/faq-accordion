@@ -1,11 +1,11 @@
 var gulp = require('gulp');
 // Requires the gulp-sass plugin
-var sass = require('gulp-sass');
+var sasss = require('gulp-sass');
 
-gulp.task('sass', function () {
+gulp.task('sasss', function () {
     return gulp.src('app/scss/**/*.scss') // Gets all files ending with .scss in app/scss and children dirs
-        .pipe(sass())
-        .pipe(gulp.dest('app/css'))
+        .pipe(sasss())
+        .pipe(gulp.dest('dist/css'))
 });
 
 var browserSync = require('browser-sync').create();
@@ -32,7 +32,7 @@ gulp.task('watch', ['browserSync', 'sass'], function () {
 
 gulp.task('sass', function () {
     return gulp.src('app/scss/**/*.scss') // Gets all files ending with .scss in app/scss
-        .pipe(sass())
+        .pipe(sasss())
         .pipe(gulp.dest('app/css'))
         .pipe(browserSync.reload({
             stream: true
@@ -99,7 +99,7 @@ var runSequence = require('run-sequence');
 
 gulp.task('build', function (callback) {
     runSequence('clean:dist',
-        ['sass', 'useref', 'images', 'fonts'],
+        ['sasss', 'useref', 'images'],
         callback
     )
 });
