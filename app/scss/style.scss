@@ -103,19 +103,18 @@ input {
             &::after {
                 content: '\276F';
                 color: $main-red;
-                width: 10px;
-                height: 10px;
+                width: 17px;
+                height: 17px;
                 text-align: center;
-                transition: transform .35s;
+                transition: transform .3s;
                 transform: rotate(-90deg);
             }
         }
 
         &-content {
             line-height: 20px;
-            max-height: 0;
-            transition: max-height .35s, padding .3s;
-            padding: 0;
+            height: 0;
+            transition: height .5s;
         }
       }
       
@@ -127,12 +126,11 @@ input {
             &::after {
                 transform: rotate(90deg);
             }
+            
         }
         ~ .accordion__tab-content {
-            max-height: 100vh;
+            height: calc-size(auto, size);
             padding: 0 0 16px;
-            transition: max-height .3s, padding .35s;
-            transition-delay: .4s;
         }
     }
 }
